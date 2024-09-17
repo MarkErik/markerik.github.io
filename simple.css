@@ -1,8 +1,8 @@
 /* Global variables. */
-/*@font-face {
+@font-face {
   font-family: "DepartureMono";
   src: url("fonts/DepartureMono-Regular.woff");
-}*/
+}
 
 :root,
 ::backdrop {
@@ -14,8 +14,8 @@
   --standard-border-radius: 5px;
 
   /* Default (light) theme */
-  --bg: #fff;
-  --accent-bg: #ececec;
+  --bg: #f3f3f3;
+  --accent-bg: #cecece;
   --text: #212121;
   --text-light: #585858;
   --border: #898EA4;
@@ -45,7 +45,7 @@ progress {
 
 html {
   /* Set the font globally */
-  font-family: var(--sans-font);
+  font-family: var(--mono-font);
   scroll-behavior: smooth;
 }
 
