@@ -108,11 +108,11 @@
 
             <h5>What I missed, and what I'd like to fix</h5>
 
-            <p>When I said that it seemed like everything worked well, there was one aspect of the interaction that I found wasn't consistent with expected behaviour, that only became apparent (at least to me - meaning that maybe someone else could have spotted it sooner) once I could manipulate the cube in its "finished", "robust" state.</p>
+            <p>When I said that it seemed like everything worked well, that was my assessment after interacting with the almost complete cube. However, once I could manipulate the cube in its "finished" / "robust" state, there was one aspect of the interaction pattern that I found wasn't consistent with expected light behaviour. Interestingly, this problematic behaviour only became apparent (at least to me - meaning that maybe someone else could have spotted it sooner) when I was trying to use it in a real setting.</p>
 
-            <p>The issue is that if you roll the cube on its side to pick a colour, and then orient upwards to rotate and adjust the brightness, I would expect that the colour would stay the same when I placed it on its side (e.g. now acting as a task light). However, when the cube is subsequently placed on its side, it will change colour to the hard-coded combinations that I used to determine which tilt sensors are in a HIGH and LOW state.</p>
+            <p>The issue occurs in the scenario when the cube is on its side and you roll it to pick a colour, for example, red, and then orient the cube upwards to adjust the brightness through the rotation action. Once you have "dialed in" the brightness you want, my expectation is that if I were to place the cube on its side, it would retain the color, in this case, red. However, the color will likely change, because after the rotation to adjust the brightness, it will now be in a different orientation when placed on its side, and it will change the colour based a set of hard-coded values corresponding to the combination of tilt sensors in their HIGH and LOW states - rather than maintaining the color which you started with.</p>
 
-            <p>I'll leave this to future work (as my Monday 7am exploration before classes) highlighted that it would require a fair bit of reworking to the logic of how I interpret the tilt sensors, as well the debounce logic.</p>
+            <p>To address this inconsistency, I'll leave this to future work, as my Monday 7am exploration before classes highlighted that it would require a fair bit of reworking to the logic of how I interpret the tilt sensors, as well the debounce logic.</p>
 
             <h5>Post script: Everything out of cardboard</h5>
             <figure>
