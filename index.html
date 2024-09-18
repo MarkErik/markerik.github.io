@@ -26,39 +26,58 @@
 				<h1>Flippy Cube</h1>
 			</header>
             <p>The Flippy Cube concept was designed for the exploration of how physical manipulation and orientation of a cube could be used to control the properties of a surface on the cube which emits light. Flippy Cube's interactions are powered by an Arduino Pro Micro which uses tilt sensors and a gyroscope to detect orientation and rotation.</p>
+
+            <dt>Jump to:</dt>
+            <dd><a href="#flippycube-video">Flippy Cube Video</a></dd>
+            <dd><a href="#flippycube-code">Link to GitHub Arduino Code</a></dd>
+            <dd><a href="#flippycube-circuit">Circuit Schematic</a></dd>
+            <dd><a href="#flippycube-story">The Flippy Cube Story</a></dd>
+            <dd><a href="#flippycube-resources">References and Resources</a></dd>
         
-        <h4>Video</h4>
-        <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1010268408?h=d84ed9d79a&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="FlippyCube - CPSC601 Assignment 0"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+            <section id="flippycube-video"><h4>Video</h4>
+        <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1010268408?h=d84ed9d79a&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="FlippyCube - CPSC601 Assignment 0"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script></section>
         
-        <h4>Arduino Code</h4><a href="https://github.com/MarkErik/flippy-cube">https://github.com/MarkErik/flippy-cube</a>
+        <section id="flippycube-code"><h4>Arduino Code</h4><a href="https://github.com/MarkErik/flippy-cube">https://github.com/MarkErik/flippy-cube</a></section>
     
-        <h4>Circuit Schematic</h4>
-        <figure><img src="assets/A0Circuit.png" alt="Circuit Schematic"></figure>
+        <section id="flippycube-circuit"> <h4>Circuit Schematic</h4>
+        <figure><img src="assets/A0Circuit.png" alt="Circuit Schematic"></figure></section>
 
-        <h4>The Story</h4>
+        <section id="flippycube-story"><h4>The Story</h4>
 
-        <p>Flippy Cube almost didn't happen.<br><br>
+        <h5>Flippy Cube almost didn't happen.</h5>
 
-            The initial idea was something I'll call Fally Tower. A simple tall lamp that would be lit when upright, and turn off when it fell over.</p>
+            <p>The initial idea was something I'll call Fally Tower. A simple tall lamp that would be lit when upright, and turn off when it fell over.</p>
 
             <figure><img src="assets/how-it-began.jpeg" alt="Fally Tower Sketch"></figure>
 
             <p>Fortunately, Prof. Oehlberg challenged me to consider how the physical characteristics of the artifact communicate or encourage interaction. The idea was then to have a series of blocks stacked on top of each other, as the motivation was a design that would encourage knocking something over so that when it fell over would turn the light off.</p>
 
-            <p>The birth of Flippy Cube<br><br>
+            <h5>The birth of Flippy Cube</h5>
 
-            To start prototyping the concept, I took a box, put some green tape over one end to signify the light, and immediately I began wondering, what would happen if I rotated it? What would happen if the light wasn't facing up, or down, but instead on its side?
+            <p>To start prototyping the concept, I took a box, put some green tape over one end to signify the light, and immediately I began wondering, what would happen if I rotated it? What would happen if the light wasn't facing up, or down, but instead on its side?</p>
+
+            <p>That brought me to my first mini technical challenge - a tilt sensor can very easily signal if something is upright, or facing down. But if the box is placed on its side  (with the tilt sensor mounted straight up and down), the ball inside the tilt sensor would just be rolling around, and giving erroneous values.</p>
+
+            <figure><img src="assets/flippy-v0.jpeg" alt="The initial Flippy Cube"></figure>
+
+            <p>To overcome this, I decided to place the tilt sensor at a 45-degree angle, so that only when the box was turned fully upside down, the ball would roll away from the contact pins. But this presented another problem - I then wanted explore what would happen if I rolled the box while it was on its side, however, the angled tilt sensor would only work in one orientation - because if you were to roll the box while it was on its side, because of the angle of the tilt sensor, there would be times when the ball would roll away and break contact. To address this, I attached another tilt sensor, on the opposite side of the box, angled 45-degrees, but in the opposite direction, so that when the box is rolled onto that side, the tilt sensor would still be facing up. This would allow me to use logic in the code to look for when the tilt sensors on opposite sides have one sensor which is LOW and the other HIGH.
             </p>
 
-            <p>
-                That brought me to my first mini technical challenge - a tilt sensor can very easily signal if something is upright, or facing down. But if the box is placed on its side  (with the tilt sensor mounted straight up and down), the ball inside the tilt sensor would just be rolling around, and giving erroneous values.</p>
+            <h5>Adding the rotation and frying my first sensor</h5>
 
-                <figure><img src="assets/flippy-v0.jpeg" alt="The initial Flippy Cube"></figure>
+            <p>TLDR; My fault for not paying closer attention to the positive and negative rails on the breaboard - assuming that the positive rail is on the outside on both sides of the breadboard.</p>
 
-              <p>To overcome this, I decided to place the tilt sensor at a 45-degree angle, so that only when the box was turned fully upside down, then the ball would roll away from the contact pins. But this brought up another problem - I then wanted explore what would happen if I rolled the box while it was on its side, however, the angled tilt sensor would only work in one orientation - because if you were to roll the box while it was on its side, because of the angle of the tilt sensor, there would be times when the ball would roll away and break contact. To address this, I attached another tilt sensor, on the opposite side of the box, angled 45-degrees, but in the opposite direction. This would allow me to use logic in the code to look for when the tilt sensors on opposite sides have one sensor which is LOW and the other HIGH.
-            </p>
-    
+            <p>To detect rotation, I used a commonly available, low-cost sensor, the MPU6050, which provides gyroscope, acceleration, and temperature sensing. It also needs 3.3V instead of 5V which I had been using for all the other components. </p>
+        </section>
 
+        <section id="flippycube-resources"><h4>References and Resources</h4>
+
+        <p>Throughout the course of developing Flippy Cube, these were some of the key resources I used:</p>
+
+        <h5>Arduino I2C Interface</h5>
+        <p>Connecting the MPU6050 gyro sensor uses the I2C (Inter-Integrated Circuit) bus (Serial Data - SDA, and Serial Clock - SCL) on the Arduino. There is a great resource about how the bus works on Arduinos as well as I2C scanner code at: <a href="https://gammon.com.au/i2c">https://gammon.com.au/i2c</a></p>
+
+        </section>
 
         </section>
     </main>

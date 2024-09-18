@@ -173,6 +173,10 @@ a:hover {
   text-decoration: none;
 }
 
+dd > a {
+  text-decoration: none;
+}
+
 button,
 .button,
 a.button, /* extra specificity to override a */
@@ -332,8 +336,8 @@ section h3:first-child {
 }
 
 section {
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  /*border-top: 1px solid var(--border);*/
+  /*border-bottom: 1px solid var(--border);*/
   padding: 2rem 1rem;
   margin: 3rem 0;
 }
