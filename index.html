@@ -67,7 +67,35 @@
 
             <p>TLDR; My fault for not paying closer attention to the positive and negative rails on the breaboard - assuming that the positive rail is on the outside on both sides of the breadboard.</p>
 
-            <p>To detect rotation, I used a commonly available, low-cost sensor, the MPU6050, which provides gyroscope, acceleration, and temperature sensing. It also needs 3.3V instead of 5V which I had been using for all the other components. </p>
+            <p>To detect rotation, I used a commonly available, low-cost sensor, the MPU6050, which provides gyroscope, acceleration, and temperature sensing. It also needs 3.3V instead of 5V which I had been using for all the other components. The breadboard power supply that I used has the ability to select the voltage that it feeds the rails. I had been using the 5V rail the entire time, where the positive side is on the outside. I turned on the 3.3V supply, but didn't notice that the positive side is on the inside rail. I hooked everything up from muscle memory, red wires on the outside rail, black wires for ground on the inside rail. I powered up the Arduino, ran the sample MPU6050 code...and nothing happened.</p>
+                <p>This must be a problem with code I was thinking. So I was re-checking the code, the libraries, etc. All the while, the poor little MPU6050 was being powered wrong - and getting quite warm (after I realised the wiring problem) - but "fortunately" no magic smoke. After I confirmed the code looked good, I then checked the wiring, and found my mistake, fixed the power wiring, and turned everything back on, and the power LED to the MPU6050 board turned on. Now, I wrote fortunately in quotes, because had I known that I really cooked the MPU6050 then, I could have saved myself 5 hours of trying to figure out why it wasn't working. After trying multiple libraries - turns out lots of people have made Arduino libraries to interface with MPU6050 sensors - I used the I2C scanner (linked in the Resources section below) - and found out that the MPU6050 was showing up on the bus at address 0x77. So I figured all was good still with the sensor, the power was on, and it was detected on the I2C bus. How wrong I was.</p>
+                <p>After much more testing and searching, it turns out that the MPU6050 *really really* should ever only use the address of 0x68 or 0x69 - and that is what all the libraries are looking to talk to it at. Anything else means either the chip is damaged (likely what I did), or faulty, as there are lots of knock-off chips floating around.</p>
+
+            <p>So how did I move forward? I had another gyro sensor, based on the MPU6500 (which has much less support and libraries available), which I wired up (correctly), started the Arduino, and yes! got communication and gyro readings. Unfortunately, the readings were not very easy to parse into detecting rotational movement. At that point I figured rotation detection would be a stretch goal.</p>
+
+            <h5>At the Electrical Maker Space and a new MPU6050</h5>
+
+            <p>The following day, I had planned to start building the final prototype, using the wires and tools at the Electrical Maker Space on campus. As I was gathering my materials, I found out that they also had a bag full of MPU6050 boards!</p>
+
+            <p>I quickly wired one up, ran the MPU6050_light library, and not only did it work, the gyro readings were exactly what I would want to interpret rotation!</p>
+            <figure>
+                <img src="assets/cleaning-up.jpeg" alt="MPU6050">
+                <figcaption>The working MPU6050 (little board in the middle) neatly wired in</figcaption>
+            </figure>
+
+            <figcaption>I'll skip the part where as I was leaving the Maker Space (on the Friday evening) I dropped the breadboard, broke the battery-powered breadboard supply, felt very sad, then rushed to Solarbotics to get a spare (but without a rechargeable battery), while hoping that the replacement rechargeable power supply I just ordered would arrive in time on Sunday to put everything together. (it did - phew!)</figcaption>
+
+            <h5>Putting it all together</h5>
+
+            <p>To increase and even-out the light output from the LED strip that I was using, I created a short compartment at the top of the cube that I lined with aluminum foil (shiny side up).</p>
+
+            <figure>
+                <img src="assets/light-reflector.jpeg" alt="Light Reflector">
+            </figure>
+
+
+
+
 
 
             <h5>Post script: Everything out of cardboard</h5>
