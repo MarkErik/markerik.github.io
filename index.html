@@ -16,14 +16,14 @@
             
           </nav>
         <h1>Mark's Bad Tech Advice</h1>
-        <p>Stuff you probably shouldn't try for yourself</p>
+        <p>Proceed at your own risk!</p>
     </header>
 
 
     <main>
 		<section id="flippycube">
 			<header>
-				<h1>FlippyCube</h1>
+				<h1>Flippy Cube</h1>
 			</header>
             <p>The Flippy Cube concept was designed for the exploration of how physical manipulation and orientation of a cube could be used to control the properties of a surface on the cube which emits light. Flippy Cube's interactions are powered by an Arduino Pro Micro which uses tilt sensors and a gyroscope to detect orientation and rotation.</p>
         
@@ -34,7 +34,32 @@
     
         <h4>Circuit Schematic</h4>
         <figure><img src="assets/A0Circuit.png" alt="Circuit Schematic"></figure>
+
+        <h4>The Story</h4>
+
+        <p>Flippy Cube almost didn't happen.<br><br>
+
+            The initial idea was something I'll call Fally Tower. A simple tall lamp that would be lit when upright, and turn off when it fell over.</p>
+
+            <figure><img src="assets/how-it-began.jpeg" alt="Fally Tower Sketch"></figure>
+
+            <p>Fortunately, Prof. Oehlberg challenged me to consider how the physical characteristics of the artifact communicate or encourage interaction. The idea was then to have a series of blocks stacked on top of each other, as the motivation was a design that would encourage knocking something over so that when it fell over would turn the light off.</p>
+
+            <p>The birth of Flippy Cube<br><br>
+
+            To start prototyping the concept, I took a box, put some green tape over one end to signify the light, and immediately I began wondering, what would happen if I rotated it? What would happen if the light wasn't facing up, or down, but instead on its side?
+            </p>
+
+            <p>
+                That brought me to my first mini technical challenge - a tilt sensor can very easily signal if something is upright, or facing down. But if the box is placed on its side  (with the tilt sensor mounted straight up and down), the ball inside the tilt sensor would just be rolling around, and giving erroneous values.</p>
+
+                <figure><img src="assets/flippy-v0.jpeg" alt="The initial Flippy Cube"></figure>
+
+              <p>To overcome this, I decided to place the tilt sensor at a 45-degree angle, so that only when the box was turned fully upside down, then the ball would roll away from the contact pins. But this brought up another problem - I then wanted explore what would happen if I rolled the box while it was on its side, however, the angled tilt sensor would only work in one orientation - because if you were to roll the box while it was on its side, because of the angle of the tilt sensor, there would be times when the ball would roll away and break contact. To address this, I attached another tilt sensor, on the opposite side of the box, angled 45-degrees, but in the opposite direction. This would allow me to use logic in the code to look for when the tilt sensors on opposite sides have one sensor which is LOW and the other HIGH.
+            </p>
     
+
+
         </section>
     </main>
 
