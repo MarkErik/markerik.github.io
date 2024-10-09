@@ -13,6 +13,8 @@
             <a href="/" >Home</a>
             
             <a href="#flippycube">FlippyCube</a>
+
+            <a href="#pullophone">Pull-o-Phone</a>
             
           </nav>
         <h1>Mark's Bad Tech Advice</h1>
@@ -39,8 +41,8 @@
         
         <section id="flippycube-code"><h4>Arduino Code</h4><a href="https://github.com/MarkErik/flippy-cube">https://github.com/MarkErik/flippy-cube</a></section>
     
-        <section id="flippycube-circuit"> <h4>Circuit Schematic</h4>
-        <figure><img src="assets/A0Circuit.png" alt="Circuit Schematic"></figure></section>
+        <section id="flippycube-circuit"> <h4>Flippy Cube Circuit Schematic</h4>
+        <figure><img src="assets/A0/A0Circuit.png" alt="Circuit Schematic"></figure></section>
 
         <section id="flippycube-story"><h4>The Story</h4>
 
@@ -48,7 +50,7 @@
 
             <p>The initial idea was something I'll call Fally Tower. A simple tall lamp that would be lit when upright, and turn off when it fell over.</p>
 
-            <figure><img src="assets/how-it-began.jpeg" alt="Fally Tower Sketch"></figure>
+            <figure><img src="assets/A0/how-it-began.jpeg" alt="Fally Tower Sketch"></figure>
 
             <p>Fortunately, Prof. Oehlberg challenged me to consider how the physical characteristics of the artifact could communicate or encourage interaction. The idea was then to have a series of blocks stacked on top of each other, as the motivation was a design that would encourage knocking something over, so that when it fell, the light would turn off.</p>
 
@@ -58,7 +60,7 @@
 
             <p>That brought me to my first mini technical challenge - a tilt sensor can very easily signal if something is upright, or facing down. But if the box is placed on its side  (with the tilt sensor mounted straight up and down), the ball inside the tilt sensor would just be rolling around, and give erroneous values.</p>
 
-            <figure><img src="assets/flippy-v0.jpeg" alt="The initial Flippy Cube"></figure>
+            <figure><img src="assets/A0/flippy-v0.jpeg" alt="The initial Flippy Cube"></figure>
 
             <p>To overcome this, I decided to place the tilt sensor at a 45-degree angle, so that only when the box was turned fully upside down, would the ball roll away from the contact pins. But this presented another problem - I also wanted to explore what would happen if I rolled the box while it was on its side. However, the angled tilt sensor would only work in one orientation, and so if I were to roll the box while it was on its side, because of the angle of the tilt sensor, there would be positions when the ball would roll away and break contact. To address this, I attached another tilt sensor, on the opposite side of the box, angled 45-degrees, but in the opposite direction, so that when the box is rolled onto that side, the tilt sensor would still be facing up. This would allow me to use logic in the code to look for when the tilt sensors on opposite sides have one sensor which is LOW and the other HIGH.
             </p>
@@ -79,7 +81,7 @@
 
             <p>I quickly wired one up, ran the MPU6050_light library, and not only did it work, the gyro readings were exactly what I would want to interpret rotation!</p>
             <figure>
-                <img src="assets/cleaning-up.jpeg" alt="MPU6050">
+                <img src="assets/A0/cleaning-up.jpeg" alt="MPU6050">
                 <figcaption>The working MPU6050 (little board in the middle) neatly wired in</figcaption>
             </figure>
 
@@ -90,19 +92,19 @@
             <p>To increase and even-out the light output from the LED-strip that I was using, I created a short compartment at the top of the cube that I lined with aluminum foil (shiny side up).</p>
 
             <figure>
-                <img src="assets/light-reflector.jpeg" alt="Light Reflector">
+                <img src="assets/A0/light-reflector.jpeg" alt="Light Reflector">
             </figure>
 
             <p>I then attached the tilt sensors to the inside of the cube, and wired everything up, using tape to secure the leads to ensure that as the cube was rolled and flipped, nothing would come loose.</p>
 
             <figure>
-                <img src="assets/final-wiring.jpeg" alt="Final Wiring">
+                <img src="assets/A0/final-wiring.jpeg" alt="Final Wiring">
             </figure>
 
             <p>Throughout the assembly process of Flippy Cube, I was testing the code, trying the rotation, and the color-changing on-its-side rolls. It was a bit akward since I would be holding the bottom piece in one hand and cradling the rest of the cube in my other hand. Everything seemed to work well. So I "sealed" it up and Flippy Cube was ready for the world.</p>
             
             <figure>
-                <img src="assets/flippy.jpg" alt="Flippy Cube">
+                <img src="assets/A0/flippy.jpg" alt="Flippy Cube">
                 <figcaption>Flippy Cube in all its green painter's tape glory</figcaption>
             </figure>
 
@@ -116,11 +118,11 @@
 
             <h5>Post script: Everything out of cardboard</h5>
             <figure>
-                <img src="assets/building-cubes.jpeg" alt="Cardboard Cubes">
+                <img src="assets/A0/building-cubes.jpeg" alt="Cardboard Cubes">
                 <figcaption>Building the cubes</figcaption>
             </figure>
             <figure>
-                <img src="assets/tripod.JPG" alt="Cardboard Tripod">
+                <img src="assets/A0/tripod.JPG" alt="Cardboard Tripod">
                 <figcaption>Even the tripod! (with a helping hand from the Flippy prototype)</figcaption>
             </figure>
 
@@ -142,6 +144,45 @@
 
 
         </section>
+
+
+		<section id="pullophone"></section>
+			<header>
+				<h1>Pull-o-Phone</h1>
+			</header>
+            <p>The Pull-O-Phone was inspired by the idea that creating music and sound takes effort, and this was represented through the act of having to use force to pull and shape the sound.</p>
+
+            <p>Pull-o-Phone was implemented using an Arduino Pro Micro wired to load sensors via the HX711 ADC as well as using analog inputs, sending data to SuperCollider which controlled four Synths, activated depending on which physical object was plugged in.</p>
+                
+            <p>The objects were chosen to explore how the feelings of shape (for example hard edges of a square), or the roundness of a cylinder affect the sound that is produced. Size and weight also contribute to the interaction. Finally, texture was also investigated as another means to alter the sound.</p>
+
+            <dt>Jump to:</dt>
+            <dd><a href="#pullophone-video">Pull-o-Phone Video</a></dd>
+            <dd><a href="#pullophone-code">Link to GitHub: Arduino, SuperCollider Code, and 3D Models</a></dd>
+            <dd><a href="#pullophone-circuit">Circuit Schematic</a></dd>
+            <dd><a href="#pullophone-story">The Making of Pull-o-Phone</a></dd>
+            <dd><a href="#pullophone-resources">References and Resources</a></dd>
+
+
+            <section id="pullophone-code"><h4>Arduino, SuperCollider Code, and 3D Models</h4><a href="https://github.com/MarkErik/pull-o-phone">https://github.com/MarkErik/pull-o-phone</a></section>
+    
+            <section id="pullophone-circuit"> <h4>Pull-o-Phone Circuit Schematic</h4>
+            <figure><img src="assets/A1/A1Circuit.png" alt="Circuit Schematic"></figure></section>
+
+            <section id="pullophone-making"> <h4>The making of Pull-o-Phone</h4>
+                
+            
+            </section>
+
+
+            <section id="pullophone-resources"><h4>References and Resources</h4>
+
+                <p>Throughout the course of developing Flippy Cube, these were some of the key resources I used:</p>
+        
+            </section>
+
+        </section>
+
     </main>
 
     <footer>
