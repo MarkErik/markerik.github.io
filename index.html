@@ -180,7 +180,13 @@
 
             <section id="pullophone-resources"><h4>References and Resources</h4>
 
-                <p>Throughout the course of developing Flippy Cube, these were some of the key resources I used:</p>
+                <p>The two key areas where I needed resources were for improving the performance of the HX711 ADC and working with SuperCollider:</p>
+
+                <h5>Modifying the HX711 to run at 80 samples-per-second</h5>
+                <p>By default, the HX711 is set to run at 10 samples-per-second which is too slow to have a responsive feel for the instrument (supposedly for accuracy, but I did not find a difference once running faster). In Google'ing for why the sensor was so slow I came across the following discussion on the Arduino Forums that described what needed to be modified on the HX711 circuit board to enable 80Hz mode: <a href="https://forum.arduino.cc/t/hx711-soldering-for-80-hz/630699">https://forum.arduino.cc/t/hx711-soldering-for-80-hz/630699</a></p>
+
+                <h5>Fantastic SuperCollider YouTube Resource</h5>
+                <p>Eli Fieldsteel, an Associate Professor of Music Composition-Theory and Director of the Experimental Music Studios at The University of Illinois Urbana-Champaign has been publishing SuperCollider tutorials, live coding, and lectures for a number of years on his YouTube channel: <a href="https://www.youtube.com/@elifieldsteel">https://www.youtube.com/@elifieldsteel</a></p>
         
             </section>
 
