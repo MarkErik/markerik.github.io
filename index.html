@@ -15,6 +15,8 @@
             <a href="#flippycube">FlippyCube</a>
 
             <a href="#pullophone">Pull-o-Phone</a>
+
+            <a href="#sweet-insight">Sweet Insight</a>
             
           </nav>
         <h1>Mark's Bad Tech Advice</h1>
@@ -138,15 +140,12 @@
 
         <h5>MPU6050 Gyroscope and Accelerometer</h5>
         <p>The MPU6050 sesnor that came from my SunFounder Arduino kit suggested that I use the Adafruit sensor libraries: <a href="https://learn.adafruit.com/mpu6050-6-dof-accelerometer-and-gyro/arduino">Adafruit - MPU6050 6-DoF Accelerometer and Gyro</a>, which also had sample code and connection diagrams at the SunFounder website: <a href="https://docs.sunfounder.com/projects/elite-explorer-kit/en/latest/basic_projects/09_basic_gy87_mpu6050.html#basic-gy87-mpu6050">MPU6050 (Basic Project)</a>. Ultimately, after much trouble-shooting, I found the MPU6050_light library easier and more reliable to work with: <a href="https://github.com/rfetick/MPU6050_light">https://github.com/rfetick/MPU6050_light</a>.</p>
+        </section>
+
     </section>
 
 
-
-
-        </section>
-
-
-		<section id="pullophone"></section>
+		<section id="pullophone">
 			<header>
 				<h1>Pull-o-Phone</h1>
 			</header>
@@ -242,6 +241,106 @@
             </section>
 
         </section>
+
+
+
+        <section id="sweet-insight">
+			<header>
+				<h1>Sweet Insight</h1>
+			</header>
+            <p>‘Sweet Insight’ is an exploration of how a person’s blood glucose levels could be visualized physically.</p>
+
+            <p>As someone with a family history of diabetes and poor blood glucose control, the motivation for Sweet Insight was to create an awareness of blood glucose levels, through a glanceable, ambient display.</p>
+                
+            <p>The amount of sugar in the glass funnel represents a person’s blood glucose levels. The weight of the sugar in the glass funnel is measured by 2 load cells in the base of Sweet Insight and the mapping used is 1 gram of sugar to each mg/dL of blood glucose. As blood glucose rises, for example after a meal, sugar is released from the top reservoir, controlled by a servo. As the body produces insulin, or uses energy, the blood glucose level decreases, and sugar is released from the funnel into a lower reservoir, controlled by a servo.</p>
+
+            <dt>Jump to:</dt>
+            <dd><a href="#sweet-insight-video">Sweeet Insight Video</a></dd>
+            <dd><a href="#sweet-insight-code">Link to GitHub: Arduino, SuperCollider Code, and 3D Models</a></dd>
+            <dd><a href="#sweet-insight-circuit">Circuit Schematic</a></dd>
+            <dd><a href="#sweet-insight-story">The Making of Pull-o-Phone</a></dd>
+            <dd><a href="#sweet-insight-resources">References and Resources</a></dd>
+
+            <section id="sweet-insight-video"><h4>Video</h4>
+            <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1017774702?h=d23e72bffa&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Pull-o-Phone: CPSC601 Assignment 1"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script></section>
+
+
+            <section id="sweet-insight-code"><h4>Arduino Code and 3D Models</h4><a href="https://github.com/MarkErik/sweet-insight">https://github.com/MarkErik/sweet-insight</a></section>
+    
+            <section id="sweet-insight-circuit"> <h4>Sweet Insight Circuit Schematic</h4>
+            <figure><img src="assets/A2/A2Circuit.png" alt="Circuit Schematic"></figure></section>
+
+            <section id="sweet-insight-story"> <h4>The making of Pull-o-Phone</h4>
+
+                <h5>Inspiration: The sound of the the Interstellar movie score.</h5>
+
+                <p>When the assignment was presented, it made me think about the long drawn out sounds used in the <a href="https://en.wikipedia.org/wiki/Interstellar_(soundtrack)">Interstellar soundtrack</a> composed by Hans Zimmer (turns out it was an organ!). It evoked this idea of having to pull something to generate sound, and that the amount of effort would influence the resulting sound.</p>
+
+                <h5>Load Cells - simple yet not.</h5>
+
+                <p>In lieu of having stretch sensors, I wondered whether a Load Cell (essentially a sensor that can measure weight) typically used for scales, could be adapted with an elastic band, and provide workable values.</p>
+    
+                <figure>
+                    <img src="assets/A1/stretch-sensor.JPG">
+                    <figcaption>Would the idea of using a Load Cell work as a pseudo streth sensor? Yes!</figcaption>
+                </figure>
+    
+                <p>The load cell worked to provide what I would interpret as stretch values, so the next step was connecting it to SuperCollider.</p>
+
+                <p>I found a great tutorial by Eli Fieldsteel (linked in <a href="#pullophone-resources">references section</a>), for sending data from the Arduino to SuperCollider. However, I immediately noticed that there was a significant delay when applying or removing force. Not at all a satisfying experience for controlling sound. Investigating this, I looked at the source code for the library that was developed for the HX711 ADC and it does smoothing over 16 values, with the goal of improving accuracy of the scale reading. I was able to set the parameter for smoothing to 1 sample, so that it would just send the values as they were received.</p>
+
+                <p>Thinking that I now had a responsive sensor, I fired up SuperCollider - and noticed that while there wasn't a delay anymore, the sensor seemed choppy for lack of a better word. After much investigation, it turns out that by default the HX711 samples at 10Hz, but it does have an 80Hz mode. Unfortunately you need to cut (in my case butcher/scrape) a circuit board trace and bridge two microchip leads...</p>
+
+                <figure>
+                    <img src="assets/A1/cutting-traces.JPG">
+                    <figcaption>Thankful for the microscope station at the Makerspace.</figcaption>
+                </figure>
+
+                <p>Once it was running at 80hz, it was very satisfying!</p>
+
+                <h5>The physical aspect of Pull-o-Phone</h5>
+
+                <p>I'm not sure why, but I decided that for this assignment I would 3D-print all the parts.</p>
+
+                <p>This was truthfully a baffling decision. I had never 3D-printed anything, nor actually used CAD software to design something to be 3D-printed.</p>
+
+                <p>I didn't abandon cardboard entirely, my first early prototype was just boxes, tape, and elastic, which was sufficient to make me say, this can work, lets just make this real by 3D-printing it. And it seemed like an "easy" way to get all the shapes that I wanted to explore.</p>
+
+                <figure>
+                    <img src="assets/A1/cardboard-prototype.jpeg">
+                    <figcaption>Yeah, this concept might work. But it needs to be 3D-printed.</figcaption>
+                </figure>
+
+                <p>I'll skip the details and just say TLDR; It added so much stress trying to do it this way, but in the end I am very happy to have had this opportunity that forced me to learn how to 3D-Print, and it allowed for really good connections for the components to work together.</p>
+
+                <figure>
+                    <img src="assets/A1/taking-shape.JPG">
+                    <figcaption>Beginning to take shape...</figcaption>
+                </figure>
+
+                <h5>The mapping challenge</h5>
+
+                <p>My goal was to have a number of shapes, where I would try to capture some of the physical characteristics and map them to sounds that you might expect - which I think is an interecting challenge, since what does a square sound like? Is it just a square wave (instead of a sine wave?) (Not really, both just sound like tones) What does a bigger square sound like? Does how heavy the object is affect your perception of what it should sound like. The printed objects come out smooth, what if they had different textures?</p>
+
+                <p>Initially I had also wanted to explore colour, but I also wanted the instrument to be accessible for people with different levels of vision - so while colour may be interesting, I opted not to make that a design parameter.</p>
+
+                <p>Mapping shape, size, weight, texture into sounds via SuperCollider was a challenge - largely due to the non-trivial aspect of programatically creating sounds. I was happy with what I could map for the demo and within the time alloted for the assignment. This is certainly an area of future work where once expertise is gained in SuperCollider, there could be an even more natural link between the physical characteristics and the associated sound created.</p>
+            </section>
+
+            <section id="sweet-insight-resources"><h4>References and Resources</h4>
+
+                <p>The two key areas where I needed resources were for improving the performance of the HX711 ADC and working with SuperCollider:</p>
+
+                <h5>Modifying the HX711 to run at 80 samples-per-second</h5>
+                <p>By default, the HX711 is set to run at 10 samples-per-second which is too slow to have a responsive feel for the instrument (supposedly for accuracy, but I did not find a difference once running faster). In Google'ing for why the sensor was so slow I came across the following discussion on the Arduino Forums that described what needed to be modified on the HX711 circuit board to enable 80Hz mode: <a href="https://forum.arduino.cc/t/hx711-soldering-for-80-hz/630699">https://forum.arduino.cc/t/hx711-soldering-for-80-hz/630699</a></p>
+
+                <h5>Fantastic SuperCollider YouTube Resource</h5>
+                <p>Eli Fieldsteel, an Associate Professor of Music Composition-Theory and Director of the Experimental Music Studios at The University of Illinois Urbana-Champaign has been publishing SuperCollider tutorials, live coding, and lectures for a number of years on his YouTube channel: <a href="https://www.youtube.com/@elifieldsteel">https://www.youtube.com/@elifieldsteel</a></p>
+        
+            </section>
+
+        </section>
+
 
     </main>
 
