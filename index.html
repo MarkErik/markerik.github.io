@@ -304,19 +304,38 @@
                     <figcaption>That opening is too big to easily control the rate of flow.</figcaption>
                 </figure>
 
-                
+                <h5>Controlling the rate of flow</h5>
+
+                <p>To control the rate of flow when releasing sugar from the funnel, and due to the protrusion at the bottom of the funnel, and because I needed to weigh how much sugar was in the funnel, I had to create a multi-piece mounting system - with a servo controlled flap.</p>
+
+                <figure>
+                    <img src="assets/A2/servo-flap.jpg">
+                    <figcaption>Prototype of sugar outlet control: Lots of iterations to get the right size, distance, and friction for the servo mount and the flap.</figcaption>
+                </figure>
+
+                <p>With the servo mounted with the flap, I was able to control the release of a stream of sugar - however, integrating all the pieces took quite a while</p>
+
+                <p>Because the top reservoir had to be supported by the base, yet the funnel had to be independent of the base, so that I could measure its dynamic amount of sugar - the funnel needed to be on a floating base in the center. Because I was 3D Printing the components and I was trying to follow good printing principles e.g. limit overhangs, and print from bottom-up -- it meant that lots of little mounting pieces had to be created, and measurements had to be precise, so that everything would fit together at the end.</p>
+
+                <figure>
+                    <img src="assets/A2/side-view.jpg">
+                    <figcaption>Fitting all together in theory.</figcaption>
+                </figure>
+
+
+
+
+
 
             </section>
 
             <section id="sweet-insight-resources"><h4>References and Resources</h4>
 
-                <p>The two key areas where I needed resources were for improving the performance of the HX711 ADC and working with SuperCollider:</p>
+                <p>To create the demo mode for the class presentation, I needed a way to send blood glucose values via the serial monitor. There is a defualt serial.read function, however it is blocking, and doesn't behave well if entering a few digits at a time.</p>
 
-                <h5>Modifying the HX711 to run at 80 samples-per-second</h5>
-                <p>By default, the HX711 is set to run at 10 samples-per-second which is too slow to have a responsive feel for the instrument (supposedly for accuracy, but I did not find a difference once running faster). In Google'ing for why the sensor was so slow I came across the following discussion on the Arduino Forums that described what needed to be modified on the HX711 circuit board to enable 80Hz mode: <a href="https://forum.arduino.cc/t/hx711-soldering-for-80-hz/630699">https://forum.arduino.cc/t/hx711-soldering-for-80-hz/630699</a></p>
+                <h5>Reliable, robust, non-blocking code to read text entered from serial monitor</h5>
 
-                <h5>Fantastic SuperCollider YouTube Resource</h5>
-                <p>Eli Fieldsteel, an Associate Professor of Music Composition-Theory and Director of the Experimental Music Studios at The University of Illinois Urbana-Champaign has been publishing SuperCollider tutorials, live coding, and lectures for a number of years on his YouTube channel: <a href="https://www.youtube.com/@elifieldsteel">https://www.youtube.com/@elifieldsteel</a></p>
+                <p>I was fortunate to find a post on the Arduino support forums where a user shared a number of different methods for reading values from the serial monitor: <a href="https://forum.arduino.cc/t/serial-input-basics-updated/382007/3">https://forum.arduino.cc/t/serial-input-basics-updated/382007/3</a></p>
         
             </section>
 
