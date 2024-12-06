@@ -353,7 +353,7 @@
 				<h1>Fight to Relax aka sooo many wires</h1>
 			</header>
             
-            <p>Fight to Relax is a set of prototype tangible input devices designed for the game ‘A Blind Legend’. The premise of ‘A Blind Legend’ is that you play as a blind medieval knight trying to save his wife who was captured by an evil king. This game was developed in 2015 by Dowino, where the objective was to design a game that requires no visuals, and relies only on audio, and thus could be played by people with varying levels of vision.</p>
+            <p>Fight to Relax is a set of prototype tangible input devices designed for the game <i>A Blind Legend</i>. The premise of <i>A Blind Legend</i> is that you play as a blind medieval knight trying to save his wife who was captured by an evil king. This game was developed in 2015 by Dowino, where the objective was to design a game that requires no visuals, and relies only on audio, and thus could be played by people with varying levels of vision.</p>
 
             <p>The Fight to Relax project was motivated by wanting to design an experience that could be used post-panic attack by people who have a heightened awareness of their own physical sensations, for example, the beating of their heart, tremors and shaking of their body, or experiencing difficulty focussing with their eyes. Being able to close your eyes and play a game which would engage your attention on something other than your physical symptoms could be helpful in the process of calming down after a panic attack or stressful event.</p>
                 
@@ -382,10 +382,58 @@
 
                 <p>Many people are able to close their eyes, take deep breaths, do a mindful body-scan and start to feel more relaxed.</p>
 
-                <p>But for some people (i.e. me), if I am feeling anxious, and if I close my eyes, all I can notice is how quickly my heart is beating, or other uncomfortable phsical symptoms of anxiety. My mind begins fixating on these sensations, and it can start an unpleasant spiral. My typical coping stategy is just to scroll on my phone, to distract myself until I start to feel better.</p>
+                <p>But for some people (i.e. me), if I am feeling anxious, and if I close my eyes, all I notice is how quickly my heart is beating, or other uncomfortable phsical symptoms of anxiety. My mind begins fixating on these sensations, and it can start an unpleasant spiral. My typical coping stategy is just to scroll on my phone, to distract myself until I start to feel better - but its not ideal.</p>
 
-                <p>I've been thinking about. My hope was that by finding an audio-only game, it could be a useful tool in "distracting" oneself from unpleasant physical symptoms </p>
+                <p>Often, when experiencing anxiety, I find that it is difficult to focus with my eyes, and so I've been thinking about if there was something I could do with my eyes closed, that wasn't the typical mindfulness exercises, where I could relax and direct my attention away from my physical symptoms. So began my search for a game you could play with your eyes closed.</p>
 
+                <h5>A Blind Legend to save the day?</h5>
+
+                <p>A lot of the searches for audio-only games would end up with games that have good compatability with screen readers, or have good audio design. However, I wanted to find a game that was "audio first and only". There was a genre of horror games that only used audio, but that wouldn't work well for the goal of helping me relax.</p>
+
+                <p>Finally I came across <i>A Blind Legend</i>, and playing the first few stages seemed like it would work well. You walk around, guided by your daughter's voice. The objective was to rescue your wife who was captured by an evil king. And there seemed to be a good set of actions in the game that I could develop physical interfaces for.</p>
+
+                <p>It all seemed good, walking around town, following your daughter into the fields and forests.</p>
+
+                <p>And then you get to the cave.</p>
+
+                <p>And a monster suddenly jumps out at you.</p>
+
+                <p>Then shortly after you get ambushed by bandits who grab your daughter.</p>
+
+                <p>So...much...fighting...</p>
+
+                <h5>Relaxing is out. But the tangible aspect is interesting.</h5>
+
+                <p>Having previously developed Arduino-powered foot pedals for audio transcription, I realised that I could build on those to create the in-game walking/running experience.</p>
+
+                <figure>
+                    <img src="assets/A3/pedals.JPG">
+                    <figcaption>Audio transcription, or a video game controller?</figcaption>
+                </figure>
+
+                <p>With a rough idea of how to implement walking, the next "step" was how to turn the character. Initially I was thinking about using a weighted-blanket embedded with sensors, where near each knee you'd have a tap sensor to turn your character left or right. I decided not to pursue the blanket idea as I wasn't sure how to accomodate different body sizes, or how to make sure that the positioning of the sensors would be consistent between each time you put the blanket on.</p>
+
+                <p>I decided to create a large footwell for each foot, and using the side of the footwell, where pivoting your foot against it would activate the button.</p>
+
+                <figure>
+                    <img src="assets/A3/prototype-pedals.JPG">
+                    <figcaption>Walking working with cardboard and painter's tape</figcaption>
+                </figure>
+
+                <h5>Pretty direct metaphors.</h5>
+
+                <p>I was thinking that a heart, that was soft and fuzzy, would capture the love the father has for his daughter - So I made a heart-shaped necklace embedded with a resistive pressure sensor to detect touch. Pressing on the heart would trigger the action of the daughter in the game to call out to you with her location.</p>
+                
+                <figure>
+                    <img src="assets/A3/heart.JPG">
+                    <figcaption>I learned how to use a sewing machine for this!</figcaption>
+                </figure>
+
+                <p>A shield (pot lid) as a shield. This also seemed like a pretty good metaphor for the shield that your character would hold in the game. At first I thought I'd have to perhaps augment the pot lid with a capacitive sensor to detect when you are holding it, but I feel like I came up with a pretty good, yet simple solution. Use a photoresistor, with the pot-lid covering it initially, so that when you pick up the pot lid, you can read a change in voltage and trigger the in-game shield.</p>
+
+                <p>How to implement the sword?</p>
+
+                <p></p>
 
 
 
