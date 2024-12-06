@@ -431,13 +431,30 @@
 
                 <p>A shield (pot lid) as a shield. This also seemed like a pretty good metaphor for the shield that your character would hold in the game. At first I thought I'd have to perhaps augment the pot lid with a capacitive sensor to detect when you are holding it, but I feel like I came up with a pretty good, yet simple solution. Use a photoresistor, with the pot-lid covering it initially, so that when you pick up the pot lid, you can read a change in voltage and trigger the in-game shield.</p>
 
-                <p>How to implement the sword?</p>
+                <p>Finally, how to implement the sword?</p>
 
-                <p></p>
+                <p>I was trying to avoid using a gyroscope and accelerometer, I wanted something simple and reliable. I also wanted to have the physical experience of "hitting" something.</p>
 
+                <p>The idea was to build a rigid cage with exposed wires along the top, where each wire would have a different voltage, and the sword would conduct that voltage the Arduino to be read - allowing me to detect which direction the sword was swung.</p>
 
+                <figure>
+                    <img src="assets/A3/sword-cage.jpeg">
+                    <figcaption>Trying to think through the wiring and resistors.</figcaption>
+                </figure>
 
-            
+                <p>Creating the sword and the cage was a lot of work, but overall, it was relatively straightforward. Unfortunately the cage wasn't nearly as rigid as I was hoping - necessitating that one had to be gentle with the sword when tapping the wires along the top. In the future I would build this out of 2x4s and use copper piping along the top, instead of wires. I really wanted a satisfying "clang" when you used the sword.</p>
+
+                <figure>
+                    <img src="assets/A3/real-sword-cage.JPG">
+                    <figcaption>Sadly, not as solid as imagined...</figcaption>
+                </figure>
+
+                <h5>So what if it isn't relaxing. It was actually pretty fun.</h5>
+
+                <p>I was pleased with how the project came together with all the different physical elements. And the people who tried the prototype seemed to find it enjoyable as well. Things to consider in the future is seeing whether using your heel to activate a button would create a better walking experience (rather than usig the ball of the foot/toes as currently designed), and as mentioned, creating a much more rigid cage for the sword striking.</p>
+
+                <p>Why did I call it "aka sooo many wires"? Knowing that I'd have to move all the pieces around for the demo, and not knowing exactly where I'd have to place the pieces, that meant I needed 1: flexible wire (28-30 guage), and 2: long lengths of it. To make it somewhat manageable I braided all the pairs of wires, which took a surprisingly long time! For sure next time, I'll need to learn / build a better way to braid wires.</p>
+
             </section>
 
 
